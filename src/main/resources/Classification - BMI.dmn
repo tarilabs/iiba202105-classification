@@ -1,0 +1,194 @@
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="http://www.trisotech.com/definitions/_b1e3fa46-be75-4672-8471-a51437a03bc4" xmlns:triso="http://www.trisotech.com/2015/triso/modeling" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:trisodmn="http://www.trisotech.com/2016/triso/dmn" xmlns:ns1="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:tc="http://www.omg.org/spec/DMN/20160719/testcase" xmlns:drools="http://www.drools.org/kie/dmn/1.2" xmlns:openapi="https://openapis.org/omg/extension/1.0" xmlns:ns2="https://www.trisotech.com/spec/DMN/20191111/EXT/" xmlns:i18n="http://www.omg.org/spec/BPMN/non-normative/extensions/i18n/1.0" xmlns:rss="http://purl.org/rss/2.0/" xmlns:trisofeed="http://trisotech.com/feed" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="_b1e3fa46-be75-4672-8471-a51437a03bc4" name="Classification - BMI" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="http://www.trisotech.com/definitions/_b1e3fa46-be75-4672-8471-a51437a03bc4">
+  <dmn:extensionElements/>
+  <dmn:itemDefinition id="_36F501C8-59F6-4241-8063-09F4093667FF" name="tBMICategory" isCollection="false">
+    <dmn:typeRef>string</dmn:typeRef>
+    <dmn:allowedValues id="_7958B134-343B-412F-8D2C-C1AE7E6B4CF5">
+      <dmn:text>"Very Severely Underweight","Severely Underweight","Underweight","Normal Weight","Overweight","Moderately Obese","Severely Obese","Very Severely Obese","Morbidly Obese","Super Obese","Hyper Obese"</dmn:text>
+    </dmn:allowedValues>
+  </dmn:itemDefinition>
+  <dmn:inputData id="_b20e040f-1238-4cbf-be26-bddb8a3309a6" name="BMI Score">
+    <dmn:extensionElements/>
+    <dmn:variable id="_f19dd35e-c1da-4a05-ad72-303cc4c66168" name="BMI Score" typeRef="number"/>
+  </dmn:inputData>
+  <dmn:decision id="_cc712d19-3915-4e6f-b93b-9345a39b793f" name="BMI Category">
+    <dmn:description>&lt;p&gt;BMI is a useful measure of overweight and obesity. It is calculated from your height and weight. BMI is an estimate of body fat and a good gauge of the risk for diseases that can occur with more body fat. The higher the BMI, the higher the risk for certain diseases such as heart disease, high blood pressure, type 2 diabetes, gallstones, breathing problems, and certain cancer.&lt;/p&gt;</dmn:description>
+    <dmn:extensionElements/>
+    <dmn:variable id="_c131f42e-485b-427d-be90-418c48a94a71" name="BMI Category" typeRef="tBMICategory"/>
+    <dmn:informationRequirement id="_d046db06-04e5-4acd-aa94-fcf7b773f42a">
+      <dmn:requiredInput href="#_b20e040f-1238-4cbf-be26-bddb8a3309a6"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_51fca84d-b0e0-4cd9-b920-b77930341c12" typeRef="tBMICategory" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row" outputLabel="BMI Category">
+      <dmn:input id="_2370bc08-d7cc-4384-90f1-2ab9ff229c04">
+        <dmn:inputExpression id="_72E796DF-D08F-42DF-9ADC-331C6777D1BF" typeRef="number">
+          <dmn:text>BMI Score</dmn:text>
+        </dmn:inputExpression>
+        <dmn:inputValues id="_CB5511B0-EA81-407D-8B28-8AADDE485D88">
+          <dmn:text>&gt;=0</dmn:text>
+        </dmn:inputValues>
+      </dmn:input>
+      <dmn:output id="_7d598fe0-0f8c-404b-9eff-8f4cdd539ca8">
+        <dmn:outputValues id="_A1BF560E-AAA8-4703-809D-2E1DCB4A8A12">
+          <dmn:text>"Very Severely Underweight","Severely Underweight","Underweight","Normal Weight","Overweight","Moderately Obese","Severely Obese","Very Severely Obese","Morbidly Obese","Super Obese","Hyper Obese"</dmn:text>
+        </dmn:outputValues>
+      </dmn:output>
+      <dmn:annotation name="Description"/>
+      <dmn:rule id="_a659340b-0885-4144-8bf1-f3e5be6deda4">
+        <dmn:inputEntry id="_40ee600e-987c-4994-946c-f595edc458a1">
+          <dmn:text>&lt;15</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_d3c5be8b-22c3-485a-a71a-3be797a07416">
+          <dmn:text>"Very Severely Underweight"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_033172f4-42f4-43cd-be36-e4f02c91e8ba">
+        <dmn:inputEntry id="_f11433ae-4ec0-464b-831d-b71266556204">
+          <dmn:text>[15..16)</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_d79b50ee-5d99-401f-8aae-7140a11bfdb0">
+          <dmn:text>"Severely Underweight"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_370c42fa-83e9-4be0-887c-709ce842c29b">
+        <dmn:inputEntry id="_f53a0ee8-a204-43f8-aa7f-0b6ab9f82545">
+          <dmn:text>[16..18.5)</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_1a9d5ccf-4394-4ebc-b4e9-e4f692fcf6fa">
+          <dmn:text>"Underweight"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_480f3aca-3c88-415d-9cbf-1e32b6ccce18">
+        <dmn:inputEntry id="_37b8e6e1-cd77-4159-980a-678627a681a8">
+          <dmn:text>[18.5..25)</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_e0b5bd8e-9415-42a1-bc2b-8036491b1853">
+          <dmn:text>"Normal Weight"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_20ccb56d-1335-4933-9296-672c20224410">
+        <dmn:inputEntry id="_4989f59f-ffeb-459b-9f43-b60491e0b422">
+          <dmn:text>[25..30)</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_0c276b89-ab3f-4e0e-90bd-3a95d72fea49">
+          <dmn:text>"Overweight"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_60a8123d-1534-4ab6-8319-bc5768287443">
+        <dmn:inputEntry id="_85491ba7-d005-4331-8c24-ea377a7dc437">
+          <dmn:text>[30..35)</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_dfc276d9-ce15-48ab-8f25-f974b57c3a3f">
+          <dmn:text>"Moderately Obese"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_eb37f42a-30ab-41dc-a7d2-578efaf1d486">
+        <dmn:inputEntry id="_248c9c2e-8a0a-4a39-ab37-960d01e356ef">
+          <dmn:text>[35..40)</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_d187d7e3-2bb7-4613-b2cd-eb52a85b3bd7">
+          <dmn:text>"Severely Obese"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_7d315b08-8961-49a5-bb78-a751cd8d5dac">
+        <dmn:inputEntry id="_dba1e9ee-205c-4649-aadf-4f57cc02d371">
+          <dmn:text>[40..45)</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_7288113f-bf0c-4571-9a5b-576dc4459ec4">
+          <dmn:text>"Very Severely Obese"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_53138c3e-cbb8-4612-9a65-96ddcb5c28ff">
+        <dmn:inputEntry id="_716b09b6-6901-4081-969c-c9ab1be6e5eb">
+          <dmn:text>[45..50)</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_78e7805a-9bbd-4129-96c2-77bd180bb323">
+          <dmn:text>"Morbidly Obese"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_5a4fcfdc-e45e-4948-8869-9008b1810e97">
+        <dmn:inputEntry id="_8544635a-92b9-4e99-8fff-3df7354438a4">
+          <dmn:text>[50..60)</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_529e1c9d-c858-45f5-9739-85eb01fc5ecd">
+          <dmn:text>"Super Obese"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_10ac48c9-237f-4295-a211-36882f13c644">
+        <dmn:inputEntry id="_01d41fa6-e350-4a41-a4bb-b8bd91ce10f4">
+          <dmn:text>&gt;=60</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_9a04b172-4c75-497d-a5a4-30179bca3af6">
+          <dmn:text>"Hyper Obese"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="_0b222d6f-ea80-45a9-abbf-f77915d3a0cf" name="DRG">
+      <di:extension>
+        <kie:ComponentsWidthsExtension xmlns:kie="http://www.drools.org/kie/dmn/1.2">
+          <kie:ComponentWidths dmnElementRef="_51fca84d-b0e0-4cd9-b920-b77930341c12">
+            <kie:width>50</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>244</kie:width>
+            <kie:width>100</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-drg-_b20e040f-1238-4cbf-be26-bddb8a3309a6" dmnElementRef="_b20e040f-1238-4cbf-be26-bddb8a3309a6" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="153"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="59.25882911682129" y="336" width="135.48234176635742" height="60.00000762939453"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_cc712d19-3915-4e6f-b93b-9345a39b793f" dmnElementRef="_cc712d19-3915-4e6f-b93b-9345a39b793f" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="50" y="220" width="154" height="61"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-drg-_d046db06-04e5-4acd-aa94-fcf7b773f42a" dmnElementRef="_d046db06-04e5-4acd-aa94-fcf7b773f42a">
+        <di:waypoint x="127" y="336"/>
+        <di:waypoint x="127" y="281"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>

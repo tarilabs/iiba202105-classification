@@ -1,0 +1,154 @@
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="http://www.trisotech.com/definitions/_5e05917a-f0fe-459d-8fdb-0391522b9ac2" xmlns:triso="http://www.trisotech.com/2015/triso/modeling" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:trisodmn="http://www.trisotech.com/2016/triso/dmn" xmlns:ns1="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:tc="http://www.omg.org/spec/DMN/20160719/testcase" xmlns:drools="http://www.drools.org/kie/dmn/1.2" xmlns:openapi="https://openapis.org/omg/extension/1.0" xmlns:ns2="https://www.trisotech.com/spec/DMN/20191111/EXT/" xmlns:i18n="http://www.omg.org/spec/BPMN/non-normative/extensions/i18n/1.0" xmlns:rss="http://purl.org/rss/2.0/" xmlns:trisofeed="http://trisotech.com/feed" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="_5e05917a-f0fe-459d-8fdb-0391522b9ac2" name="Classification - Age Group" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="http://www.trisotech.com/definitions/_5e05917a-f0fe-459d-8fdb-0391522b9ac2">
+  <dmn:extensionElements/>
+  <dmn:decision id="_ffa6b8be-a539-4a72-a4a5-4bbae9112285" name="Determine Age Group">
+    <dmn:extensionElements/>
+    <dmn:variable id="_5b26f386-31ca-4fb2-ba24-6f6d13f9636c" name="Determine Age Group" typeRef="string"/>
+    <dmn:informationRequirement id="_0671bc17-0c63-4f7c-a8e5-58bbd37e6036">
+      <dmn:requiredInput href="#_6461b494-33e2-49d2-b788-58a1219001fe"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_0fa1a621-584a-443d-9d7c-692454bd76b9" typeRef="string" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row" outputLabel="Determine Age Group">
+      <dmn:input id="_b31b48be-a54c-4f1f-b00c-63712b2aae1e">
+        <dmn:inputExpression id="_553ECB82-EA5E-43F2-B8A5-327467368604" typeRef="number">
+          <dmn:text>Age</dmn:text>
+        </dmn:inputExpression>
+        <dmn:inputValues id="_8836F4BA-722A-484E-9E62-A0B6C783EEB2">
+          <dmn:text>[0..125]</dmn:text>
+        </dmn:inputValues>
+      </dmn:input>
+      <dmn:output id="_b320570e-9c48-4da5-b94c-56ec54051309">
+        <dmn:outputValues id="_773F7AAF-0B12-4B3B-A800-755479445794">
+          <dmn:text>"Baby","Todler","Child","Teenager","Young Adult","MiddleAge","Senior Citizen","Centenarian",null</dmn:text>
+        </dmn:outputValues>
+      </dmn:output>
+      <dmn:annotation name="Description"/>
+      <dmn:rule id="_eca8449c-2a42-4ddf-8d5a-59a58bcb877e">
+        <dmn:inputEntry id="_7f4623e6-b361-4d1f-b749-e852b3fd56cc">
+          <dmn:text>&lt;1</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_8989eca6-947a-4f26-88be-6e79af1a5006">
+          <dmn:text>"Baby"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_4081d170-a126-4355-b3fc-11ebbbe29fde">
+        <dmn:inputEntry id="_6f17440a-b275-429c-a63f-69d9421fe64f">
+          <dmn:text>[1..3]</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_49f2fc39-df95-4f87-bdb4-a387ba4669af">
+          <dmn:text>"Todler"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_fee9f616-cf5c-4eac-8a84-52c9d849f96c">
+        <dmn:inputEntry id="_dd994b01-c88d-4f9d-bc5f-23c7bdfd6283">
+          <dmn:text>(3..13)</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_266e7c4a-9781-480b-b721-01058283cfe2">
+          <dmn:text>"Child"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_db18e497-7781-49da-b3e2-1a4331d5def2">
+        <dmn:inputEntry id="_9852395f-4b30-4c60-9eb4-c387a703a98b">
+          <dmn:text>[13..20)</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_3d890869-0409-4ef4-8cf4-32a35d93ce7c">
+          <dmn:text>"Teenager"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_b8aa5d1f-2d29-4ec1-b951-716cf18a1730">
+        <dmn:inputEntry id="_62b40c6e-9565-4d3e-9288-ce3c7afff395">
+          <dmn:text>[20..40)</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_f6c2f3d0-b2cd-46b2-a31b-7f96343c1597">
+          <dmn:text>"Young Adult"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_77ee034b-b694-4540-b842-900cce58d9a8">
+        <dmn:inputEntry id="_ea399fd7-f00f-4ad5-9fa3-3e707a41b4e1">
+          <dmn:text>[40..60)</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_f0255328-650d-4b58-9d44-3790020d59c4">
+          <dmn:text>"MiddleAge"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_8dd2a216-9f2e-4ed0-9879-5fa425832f70">
+        <dmn:inputEntry id="_962d7983-a1e0-4bac-b7ee-b90ea0de71d7">
+          <dmn:text>[60..100)</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_88aa1030-f06e-4e2b-9786-f72a0a6016ba">
+          <dmn:text>"Senior Citizen"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_ade532aa-45b7-4700-beb5-0263d7ed0e0b">
+        <dmn:inputEntry id="_21183c0c-e546-4782-915c-9dd319ae2b00">
+          <dmn:text>&gt;=100</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_3c6d6ba2-9f10-4b71-bd1e-6fdddfc11a44">
+          <dmn:text>"Centenarian"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmn:inputData id="_6461b494-33e2-49d2-b788-58a1219001fe" name="Age">
+    <dmn:extensionElements/>
+    <dmn:variable id="_07a83c0e-5ded-4e16-afab-495b36509420" name="Age" typeRef="number"/>
+  </dmn:inputData>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="_0b222d6f-ea80-45a9-abbf-f77915d3a0cf" name="DRG">
+      <di:extension>
+        <kie:ComponentsWidthsExtension xmlns:kie="http://www.drools.org/kie/dmn/1.2">
+          <kie:ComponentWidths dmnElementRef="_0fa1a621-584a-443d-9d7c-692454bd76b9">
+            <kie:width>50</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>185</kie:width>
+            <kie:width>100</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-drg-_ffa6b8be-a539-4a72-a4a5-4bbae9112285" dmnElementRef="_ffa6b8be-a539-4a72-a4a5-4bbae9112285" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="50" y="237" width="153" height="60"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_6461b494-33e2-49d2-b788-58a1219001fe" dmnElementRef="_6461b494-33e2-49d2-b788-58a1219001fe" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="153"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="58.75882911682129" y="352" width="135.48234176635742" height="60.00000762939453"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-drg-_0671bc17-0c63-4f7c-a8e5-58bbd37e6036" dmnElementRef="_0671bc17-0c63-4f7c-a8e5-58bbd37e6036">
+        <di:waypoint x="126.49680137634277" y="352"/>
+        <di:waypoint x="126.5" y="297"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>
